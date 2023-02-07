@@ -1,0 +1,93 @@
+header {
+    border-bottom: 1px solid #cce;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+textarea {
+    resize: none;
+}
+
+.box-major {
+    border: 2px solid #123;
+}
+.center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.col, .row {
+    display: flex;
+    justify-content: stretch;
+    margin: 0;
+    padding: 0;
+}
+
+.col > *, .row > * {
+    flex: 1;
+}
+
+.content {
+    padding: 3rem;
+}
+
+.drag-handle {
+    background-color: #ccd;
+    border-bottom: 1px solid #eef;
+    border-left: 1px solid #eef;
+    border-top: 1px solid #eef;
+    border-radius: .5rem 0 0 .5rem;
+    cursor: move;
+    flex: 0 1 1.5rem;
+    width: 1.5rem;
+}
+
+.drag-handle + * {
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.flex-shrink {
+    flex: 0 1 1rem;
+}
+
+.row.top {
+    flex-direction: column;
+}
+
+.side-label {
+    text-align: center;
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
+}
+
+.target {
+    border: 2px solid blue;
+}
+
+#title {
+    border-bottom: 1px solid #cce;
+    border-left: 0 none #00000000;
+    border-right: 0 none #00000000;
+    border-top: 0 none #00000000;
+    margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 1400px) {
+    .row.top {
+        flex-direction: row;
+    }
+}

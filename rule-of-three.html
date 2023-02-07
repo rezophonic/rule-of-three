@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>Rule of 3 Story Template</title>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <meta name="description" content="A simple template for generating a story based on a Rule of Three" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3
+    /dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+        integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="inout.js"></script>
+    <script src="dragreorder.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <button class="btn btn-primary" onclick="exportForm()">Export outline to .md</button>
+        <label>
+            Import from .md:
+            <input onchange="importMD(this)" type="file" />
+        </label>
+        <button class="btn btn-secondary" onclick="clearForm()">Clear form</button>
+    </header>
+    <div class="content">
+        <input class="h1" id="title" placeholder="Title" type="text" />
+
+
+        <div class="row top">
+            <div class="col box-major">
+                <div class="flex-shrink center h3">Plot</div>
+                <div class="drag-container row">
+                    <div class="flex-shrink side-label">Act 1</div>
+                    <div
+                        class="row drag-target"
+                        data-drag-group="act"
+                        data-drag-children="hook"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="act1" placeholder="Act 1 Plot"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act1hook1" placeholder="Hook 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act1hook2" placeholder="Hook 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act1hook3" placeholder="Hook 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div class="flex-shrink side-label">Act 2</div>
+                    <div
+                        class="row drag-target"
+                        data-drag-group="act"
+                        data-drag-children="hook"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="act2" placeholder="Act 2 Plot"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act2hook1" placeholder="Hook 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act2hook2" placeholder="Hook 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act2hook3" placeholder="Hook 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div class="flex-shrink side-label">Act 3</div>
+                    <div
+                        class="row drag-target"
+                        data-drag-children="hook"
+                        data-drag-group="act"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="act3" placeholder="Act 3 Plot"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act3hook1" placeholder="Hook 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act3hook2" placeholder="Hook 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="hook"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="act3hook3" placeholder="Hook 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col box-major">
+                <div class="flex-shrink center h3">
+                    Characters
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character1name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character1trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character1trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character1trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character2name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character2trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character2trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character2trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character3name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character3trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character3trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character3trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character4name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character4trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character4trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character4trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character5name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character5trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character5trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character5trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character6name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character6trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character6trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character6trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character7name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character7trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character7trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character7trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character8name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character8trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character8trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character8trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="character"
+                        data-drag-children="characterTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="character9name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character9trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character9trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="characterTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="character9trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col box-major">
+                <div class="flex-shrink center h3">
+                    Setting
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting1name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting1trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting1trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting1trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting2name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting2trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting2trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting2trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting3name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting3trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting3trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting3trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting4name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting4trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting4trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting4trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting5name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting5trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting5trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting5trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting6name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting6trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting6trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting6trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting7name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting7trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting7trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting7trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting8name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting8trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting8trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting8trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="drag-container row">
+                    <div
+                        class="row drag-target"
+                        data-drag-group="setting"
+                        data-drag-children="settingTrait"
+                        ondragend="dragEnd(event)"
+                        ondragover="dragOver(event)">
+                        <div
+                            class="drag-handle"
+                            draggable="true"
+                            ondragstart="dragParent(this)" >&nbsp;</div>
+                        <textarea id="setting9name" placeholder="Name"></textarea>
+                    </div>
+                    <div class="col">
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting9trait1" placeholder="Trait 1"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting9trait2" placeholder="Trait 2"></textarea>
+                        </div>
+                        <div
+                            class="row drag-target"
+                            data-drag-group="settingTrait"
+                            ondragend="dragEnd(event)"
+                            ondragover="dragOver(event)">
+                            <div
+                                class="drag-handle"
+                                draggable="true"
+                                ondragstart="dragParent(this)" >&nbsp;</div>
+                            <textarea id="setting9trait3" placeholder="Trait 3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
